@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string input;
+    cout << "Enter input: ";
+    getline(cin, input);
+    int i=0;
+
+    if (input[0] == '/' && input[1] == '/') {
+        cout << "This is a single-line comment." << endl;
+    }
+
+    else if (input[0] == '/' && input[1] == '*') {
+          while (input[i] != '\0'){
+              if (input[i] == '*' && input[i + 1] == '/') {
+                cout << "This is a multi-line comment." << endl;
+                return 0;
+            }
+
+            i++;
+        }
+         cout << "This is an incomplete multi-line comment." << endl;
+    }
+
+    else{
+            cout<<"there is no comment"<<endl;
+    }
+    
+    return 0;
+}
+
