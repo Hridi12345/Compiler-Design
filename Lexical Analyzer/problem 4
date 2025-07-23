@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string input;
+    cout << "Enter input: ";
+    getline(cin, input);
+
+    int i = 0, flag = 1;
+
+
+    if (!((input[0] >= 'A' && input[0] <= 'Z') ||
+          (input[0] >= 'a' && input[0] <= 'z') ||
+           input[0] == '_')) {
+        flag = 0;
+    }
+    else {
+        for (i = 1; input[i] != '\0'; i++) {
+            if (!((input[i] >= 'A' && input[i] <= 'Z') ||
+                  (input[i] >= 'a' && input[i] <= 'z') ||
+                  (input[i] >= '0' && input[i] <= '9') ||
+                   input[i] == '_')) {
+                flag = 0;
+                break;
+            }
+        }
+    }
+
+
+    if (flag == 1) {
+        string keywords[] = {
+            "auto", "break", "case", "char", "const", "continue", "default", "do",
+            "double", "else", "enum", "extern", "float", "for", "goto", "if",
+            "int", "long", "register", "return", "short", "signed", "sizeof",
+            "static", "struct", "switch", "typedef", "union", "unsigned", "void",
+            "volatile", "while", "class", "public", "private", "protected",
+            "template", "typename", "virtual", "new", "delete", "this", "using",
+            "namespace", "bool", "true", "false", "try", "catch", "throw", "include"
+        };
+        int keywordCount  = sizeof(keywords) / sizeof(keywords[0]);
+
+        for (int j = 0; j < keywordCount; j++) {
+            if (input == keywords[j]) {
+                flag = 0;
+                break;
+            }
+        }
+    }
+
+    if (flag == 1)
+        cout << "Valid Identifier" << endl;
+    else
+        cout << "Invalid Identifier" << endl;
+
+    return 0;}
